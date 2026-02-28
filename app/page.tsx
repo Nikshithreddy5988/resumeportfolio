@@ -1,13 +1,25 @@
 export default function Page() {
   return (
     <main style={{ padding: "40px", fontFamily: "Arial" }}>
-      <h1>Hi, I’m Nikshith</h1>
-      <h3>Data Analyst | SQL | Power BI | Python</h3>
+      <h1>Hi, I’m Nikshith Reddy Sheelam</h1>
+      <h3>Data Analyst | Business Intelligence | SQL • Power BI • Python</h3>
 
       <p>
-        Welcome to my portfolio website. I work with data to build dashboards,
-        analyze trends, and support data-driven decisions.
+        I am a Data Analyst with experience in SQL-based automation, data validation, and business intelligence reporting. I work with complex datasets to ensure data accuracy, build dashboards, and deliver insights that support data-driven decision-making for leadership and stakeholders.
       </p>
+
+      <hr />
+
+      <h2>About Me</h2>
+      <ul>
+        <p>
+          I am currently working as an Accountability Data Analyst at Kansas City Public Schools, where I develop SQL-based validation logic, automate data quality checks, and design Power BI and SSRS reports for district and school leadership.
+
+I have hands-on experience working across the full data lifecycle — from data ingestion and validation to analysis, visualization, and reporting. My work supports audit-ready reporting, regulatory compliance, and operational decision-making.
+
+I hold a Master’s degree in Computer Science and have worked with education, nonprofit, and academic datasets. I enjoy transforming raw data into reliable insights and collaborating with cross-functional teams to solve data challenges.
+        </p> 
+      </ul>
 
       <hr />
 
