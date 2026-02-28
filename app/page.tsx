@@ -5,7 +5,7 @@ export default function Page() {
       <h3>Data Analyst | SQL | Power BI | Python</h3>
 
       <p>
-        Welcome to my portfolio website. I work with data to build dashboards, 
+        Welcome to my portfolio website. I work with data to build dashboards,
         analyze trends, and support data-driven decisions.
       </p>
 
