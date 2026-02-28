@@ -12,13 +12,13 @@ export default function Page() {
 
       <h2>About Me</h2>
       <ul>
-        <p>
+        <li>
           I am currently working as an Accountability Data Analyst at Kansas City Public Schools, where I develop SQL-based validation logic, automate data quality checks, and design Power BI and SSRS reports for district and school leadership.
 
 I have hands-on experience working across the full data lifecycle — from data ingestion and validation to analysis, visualization, and reporting. My work supports audit-ready reporting, regulatory compliance, and operational decision-making.
 
 I hold a Master’s degree in Computer Science and have worked with education, nonprofit, and academic datasets. I enjoy transforming raw data into reliable insights and collaborating with cross-functional teams to solve data challenges.
-        </p> 
+        </li>
       </ul>
 
       <hr />
