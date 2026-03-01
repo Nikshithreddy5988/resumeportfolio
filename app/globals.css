@@ -1,9 +1,19 @@
 :root { color-scheme: dark; }
 html { scroll-behavior: smooth; }
-:root { --nav-height: 15px; }
+
+
+:root { --nav-height: 72px; }
+
+@media (max-width: 640px) {
+  :root { --nav-height: 108px; } /* nav becomes taller when it wraps */
+}
 
 /* makes anchor scroll stop below sticky header */
 .section { scroll-margin-top: calc(var(--nav-height) + 18px); }
+
+html, body {
+  overflow-x: hidden;
+}
 
 body {
   margin: 0;
@@ -134,9 +144,13 @@ body {
 /* Cards */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 14px;
 }
+
+
+
+
 .card {
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -227,6 +241,13 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 14px;
   align-items: stretch;   /* ✅ forces equal height */
+}
+
+
+.container {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 /* Form container card */
@@ -334,6 +355,28 @@ body {
   margin-top: 10px;
   font-size: 13px;
   color: rgba(248, 113, 113, 0.95);
+
+}
+.mapEmbed iframe {
+  width: 100%;
+  height: 200px;
+}
+@media (max-width: 640px) {
+  .nav {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 12px;
+  }
+
+  .navLinks {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .resumeBtn {
+    margin-left: auto;
+  }
 }
 /* Footer */
 .footer {
