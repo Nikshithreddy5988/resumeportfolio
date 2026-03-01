@@ -2,6 +2,10 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 function Reveal({
   children,
@@ -223,7 +227,7 @@ export default function Page() {
     <main className="page">
       {/* NAV */}
       <header className="nav">
-        <a className="brand" href="#top">Nikshith<span className="dot"></span></a>
+        <a className="brand" href="#top">Nikshith's Portfolio<span className="dot"></span></a>
 
         <nav className="navLinks">
           <a href="#about">About</a>
