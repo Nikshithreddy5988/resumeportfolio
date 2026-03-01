@@ -1,6 +1,5 @@
 "use client";
-
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 export const viewport = {
   width: "device-width",
@@ -15,14 +14,27 @@ function Reveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(ref, { amount: 0.18 }); // when ~18% visible
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  const inView = useInView(ref, { amount: 0.18 });
+
+  // ✅ During prerender/SSR, don't render motion at all
+  if (!mounted) {
+    return (
+      <div ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
       ref={ref}
       className={className}
       initial={{ opacity: 0, y: 16 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }} // ✅ disappears again when scrolling away
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
     >
       {children}
