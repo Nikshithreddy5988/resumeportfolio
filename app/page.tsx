@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 function Reveal({
@@ -98,6 +98,124 @@ function Icon({ type }: { type: "code" | "bi" | "db" | "eng" | "cloud" | "tools"
         </svg>
       );
   }
+}
+
+function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string>("");
+
+  const blockPasteCopy = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+  };
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMsg("");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const email = String(data.get("email") ?? "").trim();
+    const confirmEmail = String(data.get("confirmEmail") ?? "").trim();
+
+    // ✅ Match check (case-insensitive)
+    if (email.toLowerCase() !== confirmEmail.toLowerCase()) {
+      setStatus("error");
+      setErrorMsg("Emails do not match. Please re-enter.");
+      return;
+    }
+
+    // Optional: remove confirmEmail from what gets sent
+    data.delete("confirmEmail");
+
+    try {
+      const res = await fetch("https://formspree.io/f/maqdzqzg", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+        form.reset();
+      } else {
+        setStatus("error");
+        setErrorMsg("Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("error");
+      setErrorMsg("Network error. Please try again.");
+    }
+  }
+
+  return (
+    <form className="contactForm" onSubmit={handleSubmit}>
+      <div className="cardTitle">Message me</div>
+
+      <div className="formGrid">
+        <label className="label">
+          Name
+          <input className="input" name="name" placeholder="Your name" required />
+        </label>
+
+        <label className="label">
+          Email
+          <input
+            className="input"
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            required
+            autoComplete="email"
+          />
+        </label>
+
+        <label className="label">
+          Confirm Email
+          <input
+            className="input"
+            type="email"
+            name="confirmEmail"
+            placeholder="re-enter email"
+            required
+            autoComplete="off"
+            onPaste={blockPasteCopy}   // ✅ block paste
+            onCopy={blockPasteCopy}    // ✅ block copy
+            onCut={blockPasteCopy}     // ✅ block cut
+            spellCheck={false}
+          />
+        </label>
+      </div>
+
+      <label className="label">
+        Message
+        <textarea
+          className="textarea"
+          name="message"
+          rows={6}
+          placeholder="Write your message..."
+          required
+        />
+      </label>
+
+      <button className="sendBtn" type="submit" disabled={status === "sending"}>
+        {status === "sending" ? "Sending..." : "Send Message"}
+      </button>
+
+      {status === "sent" && (
+        <p className="formSuccess">✅ Message sent successfully! I’ll get back to you soon.</p>
+      )}
+
+      {status === "error" && (
+        <p className="formError">❌ {errorMsg || "Something went wrong. Please try again."}</p>
+      )}
+
+      {status === "idle" && (
+        <p className="formNote">This form sends messages to my email.</p>
+      )}
+    </form>
+  );
 }
 
 export default function Page() {
@@ -336,6 +454,8 @@ export default function Page() {
       </Section>
 
      <Section id="contact" title="Contact">
+
+      
   <div className="contactGrid">
     {/* Left: contact info */}
     <Reveal className="contactCard">
@@ -365,58 +485,27 @@ export default function Page() {
         </a>
       </div>
 
-      <div className="contactRow">
-        <span className="contactLabel">Location</span>
-        <span className="contactValue">Kansas City, Missouri</span>
-      </div>
+      <div className="mapCard">
+  <div className="cardTitle">Location</div>
+
+  <div className="mapEmbed">
+    <iframe
+      src="https://www.google.com/maps?q=Kansas%20City%2C%20Missouri&output=embed"
+      width="100%"
+      height="200"     // ✅ bigger map
+      style={{ border: 0 }}
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    />
+  </div>
+
+  <p className="mapNote">Kansas City, Missouri</p>
+</div>
     </Reveal>
 
     {/* Right: message form */}
     <Reveal className="contactFormCard">
-      <form
-        className="contactForm"
-        action="https://formspree.io/f/maqdzqzg"
-        method="POST"
-      >
-        <div className="cardTitle">Message me</div>
-
-        <div className="formGrid">
-          <label className="label">
-            Name
-            <input className="input" name="name" placeholder="Your name" required />
-          </label>
-
-          <label className="label">
-            Email
-            <input
-              className="input"
-              type="email"
-              name="email"
-              placeholder="your@email.com"
-              required
-            />
-          </label>
-        </div>
-
-        <label className="label">
-          Message
-          <textarea
-            className="textarea"
-            name="message"
-            rows={6}
-            placeholder="Write your message..."
-            required
-          />
-        </label>
-
-        <button className="sendBtn" type="submit">
-          Send Message
-        </button>
-
-        <p className="formNote">
-        This form sends messages to my email.
-        </p>
-      </form>
+      <ContactForm />
     </Reveal>
   </div>
 </Section> 

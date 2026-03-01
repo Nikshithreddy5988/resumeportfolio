@@ -202,12 +202,31 @@ body {
 .contactValue { color: #e5e7eb; }
 .contactLink { color: #60a5fa; text-decoration: none; }
 .contactLink:hover { text-decoration: underline; }
+
+.mapCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mapEmbed {
+  flex: 1; /* ✅ allows map to grow inside card */
+  border-radius: 10px;
+  overflow: hidden;
+  border: 0.2px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.mapNote {
+  font-size: 22px;
+  color: #ccd4e2;
+}
 /* Contact layout */
 .contactGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 14px;
-  align-items: start;
+  align-items: stretch;   /* ✅ forces equal height */
 }
 
 /* Form container card */
@@ -231,17 +250,27 @@ body {
   display: block;
 }
 
+
 .formGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
+/* Make Confirm Email span full width */
+.formGrid .label:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 520px) {
   .formGrid {
     grid-template-columns: 1fr;
   }
+  .formGrid .label:nth-child(3) {
+    grid-column: auto;
+  }
 }
+
 
 .label {
   display: block;
@@ -294,6 +323,17 @@ body {
   font-size: 12px;
   color: #a7b0c0;
   line-height: 1.4;
+}
+.formSuccess {
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(34, 197, 94, 0.95);
+}
+
+.formError {
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(248, 113, 113, 0.95);
 }
 /* Footer */
 .footer {
