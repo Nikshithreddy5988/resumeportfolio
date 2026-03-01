@@ -335,7 +335,7 @@ export default function Page() {
         </div>
       </Section>
 
-      <Section id="contact" title="Contact">
+     <Section id="contact" title="Contact">
   <div className="contactGrid">
     {/* Left: contact info */}
     <Reveal className="contactCard">
@@ -375,7 +375,7 @@ export default function Page() {
     <Reveal className="contactFormCard">
       <form
         className="contactForm"
-        action="https://formspree.io/f/abcdwxyz"
+        action="https://formspree.io/f/maqdzqzg"
         method="POST"
       >
         <div className="cardTitle">Message me</div>
@@ -414,13 +414,12 @@ export default function Page() {
         </button>
 
         <p className="formNote">
-          (Replace the Formspree link with your own form endpoint.)
+        This form sends messages to my email.
         </p>
       </form>
     </Reveal>
   </div>
-</Section>
- 
+</Section> 
 
       <footer className="footer">© {new Date().getFullYear()} Nikshith Reddy Sheelam</footer>
     </main>
