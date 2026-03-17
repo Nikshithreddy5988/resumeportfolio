@@ -1,0 +1,13 @@
+⨯ ./app/layout.tsx:3:1
+Module not found: Can't resolve '@/components/site-nav'
+  1 | import type { Metadata } from "next";
+  2 | import Link from "next/link";
+> 3 | import { SiteNav } from "@/components/site-nav";
+    | ^
+  4 | import "./globals.css";
+  5 |
+  6 | const navItems = [
+
+https://nextjs.org/docs/messages/module-not-found
+⚠ Fast Refresh had to perform a full reload when \\resumeportfolio\\app\\globals.css","ids":[]}, \\resumeportfolio\\components\\site-nav.tsx","ids":["SiteNav"]}, \\resumeportfolio\\node_modules\\next\\dist\\client\\app-dir\\link.js","ids":[]} changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+^C^C

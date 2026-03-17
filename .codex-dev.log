@@ -1,0 +1,63 @@
+
+> nextjs@0.1.0 dev
+> next dev
+
+⚠ Port 3000 is in use by process 30492, using available port 3001 instead.
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://192.168.86.97:3001
+
+✓ Starting...
+✓ Ready in 1112ms
+ GET / 200 in 3.0s (compile: 2.8s, render: 235ms)
+ GET / 200 in 53ms (compile: 6ms, render: 48ms)
+Persisting failed: Unable to write SST file 00000030.sst
+
+Caused by:
+    The system cannot find the path specified. (os error 3)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+⨯ Error: ENOENT: no such file or directory, open 'C:\Users\sheel\OneDrive\Documents\GitHub\resumeportfolio\.next\dev\server\app\page\build-manifest.json'
+    at ignore-listed frames {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\sheel\\OneDrive\\Documents\\GitHub\\resumeportfolio\\.next\\dev\\server\\app\\page\\build-manifest.json'
+}
+
+thread 'tokio-runtime-worker' (22828) panicked at C:\actions-runner\_work\next.js\next.js\turbopack\crates\turbo-tasks-backend\src\backend\operation\mod.rs:156:17:
+Failed to restore task data (corrupted database or bug): Meta for ResolveResult::first_source (TaskId 141131))
+
+Caused by:
+    0: Looking up data for TaskId 141131 from database failed
+    1: Unable to open static sorted file referenced from 00000020.meta
+    2: Unable to open static sorted file 00000015.sst
+    3: The system cannot find the path specified. (os error 3)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+○ Compiling /_error ...
+⨯ Error: ENOENT: no such file or directory, open 'C:\Users\sheel\OneDrive\Documents\GitHub\resumeportfolio\.next\dev\server\app\page\build-manifest.json'
+    at ignore-listed frames {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\sheel\\OneDrive\\Documents\\GitHub\\resumeportfolio\\.next\\dev\\server\\app\\page\\build-manifest.json'
+}
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+⨯ Error: ENOENT: no such file or directory, open 'C:\Users\sheel\OneDrive\Documents\GitHub\resumeportfolio\.next\dev\server\app\page\build-manifest.json'
+    at ignore-listed frames {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\sheel\\OneDrive\\Documents\\GitHub\\resumeportfolio\\.next\\dev\\server\\app\\page\\build-manifest.json'
+}
+^C^C
